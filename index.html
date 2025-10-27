@@ -1,0 +1,417 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>CodeX Techno — The world of technology we build for tomorrow</title>
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <!-- Basic SEO -->
+  <meta name="description" content="CodeX Techno — Web & App development, AI, and data solutions. The world of technology we build for tomorrow." />
+
+  <style>
+    /* -------------------------
+       Variables & Global
+       ------------------------- */
+    :root{
+      --bg:#071014;            /* dark background */
+      --card:#0b1b17;          /* slightly lighter dark */
+      --accent:#0dbb67;        /* green accent */
+      --accent-2:#66d89f;      /* softer green */
+      --muted:#9fb3a4;         /* muted text */
+      --white:#eaf7f0;
+      --glass: rgba(255,255,255,0.03);
+      --max-width:1100px;
+      --radius:12px;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family:Inter,system-ui,Segoe UI,Roboto,"Helvetica Neue",Arial;
+      background:linear-gradient(180deg,var(--bg),#03120f);
+      color:var(--white);
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      line-height:1.5;
+    }
+    a{color:inherit;text-decoration:none}
+    .container{max-width:var(--max-width);margin:0 auto;padding:0 20px;}
+
+    /* -------------------------
+       NAVBAR
+       ------------------------- */
+    header{
+      position:sticky;top:0;z-index:999;
+      backdrop-filter: blur(6px);
+      background:linear-gradient(180deg, rgba(7,16,20,0.7), rgba(7,16,20,0.4));
+      border-bottom:1px solid rgba(255,255,255,0.03);
+    }
+    .nav{display:flex;align-items:center;justify-content:space-between;padding:12px 0;}
+    .brand{display:flex;gap:12px;align-items:center}
+    .logo{
+      width:44px;height:44px;border-radius:10px;
+      display:grid;place-items:center;background:linear-gradient(135deg,var(--accent),var(--accent-2));
+      color:#03120f;font-weight:700;font-size:18px;box-shadow:0 6px 18px rgba(11,187,103,0.12);
+    }
+    nav ul{display:flex;gap:18px;align-items:center;margin:0;padding:0;list-style:none}
+    nav a.navlink{color:var(--muted);font-weight:500;padding:8px;border-radius:8px}
+    nav a.navlink:hover{color:var(--white);background:var(--glass)}
+    .cta{background:linear-gradient(90deg,var(--accent),var(--accent-2));padding:8px 14px;border-radius:10px;color:#03120f;font-weight:600}
+    /* mobile */
+    .burger{display:none;cursor:pointer;padding:8px;border-radius:8px}
+    .burger div{width:22px;height:2px;background:var(--white);margin:4px 0;border-radius:2px}
+    @media (max-width:880px){
+      nav ul{display:none;flex-direction:column;gap:10px;background:transparent;padding:12px;margin-top:8px}
+      .burger{display:block}
+      .mobile-show{display:block}
+      nav ul.show{display:flex;position:absolute;right:20px;top:72px;background:rgba(3,6,8,0.6);padding:12px;border-radius:10px;backdrop-filter: blur(6px)}
+    }
+
+    /* -------------------------
+       HERO
+       ------------------------- */
+    .hero{padding:48px 0 28px;display:grid;grid-template-columns:1fr 420px;gap:32px;align-items:center}
+    .hero-left h1{font-size:clamp(28px,4vw,44px);margin:0 0 12px;line-height:1.05}
+    .tagline{color:var(--accent-2);font-weight:700}
+    .hero p.lead{color:var(--muted);max-width:58ch}
+    .hero-cta{margin-top:18px;display:flex;gap:12px;flex-wrap:wrap}
+    .card{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));padding:18px;border-radius:14px;border:1px solid rgba(255,255,255,0.03)}
+    .hero-right{display:flex;flex-direction:column;gap:12px;align-items:stretch}
+    .feature-mini{display:flex;align-items:center;gap:12px}
+    .feature-mini svg{width:36px;height:36px;flex-shrink:0}
+
+    @media (max-width:880px){
+      .hero{grid-template-columns:1fr; padding:28px 0}
+      .hero-right{order:2}
+    }
+
+    /* -------------------------
+       FEATURES / SERVICES
+       ------------------------- */
+    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin:34px 0}
+    .service{padding:18px;border-radius:12px;background:var(--card);border:1px solid rgba(255,255,255,0.02)}
+    .service h4{margin:8px 0 6px}
+    .service p{color:var(--muted);font-size:14px}
+    @media (max-width:1100px){ .grid{grid-template-columns:repeat(2,1fr)} }
+    @media (max-width:640px){ .grid{grid-template-columns:1fr} }
+
+    /* -------------------------
+       HOW IT WORKS
+       ------------------------- */
+    .steps{display:flex;gap:14px;flex-wrap:wrap;margin-top:10px}
+    .step{flex:1 1 220px;padding:14px;border-radius:12px;background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.005));border:1px solid rgba(255,255,255,0.02)}
+
+    /* -------------------------
+       TESTIMONIALS
+       ------------------------- */
+    .testimonials{display:grid;grid-template-columns:1fr 360px;gap:18px;align-items:center;margin-top:30px}
+    .quote{font-style:italic;color:var(--muted)}
+    .card-big{padding:22px;border-radius:14px;background:linear-gradient(180deg,var(--card),rgba(11,27,21,0.6));border:1px solid rgba(255,255,255,0.02)}
+
+    @media (max-width:880px){ .testimonials{grid-template-columns:1fr} }
+
+    /* -------------------------
+       CONTACT
+       ------------------------- */
+    .contact-row{display:grid;grid-template-columns:1fr 360px;gap:18px;margin-top:28px}
+    .contact-form label{display:block;font-size:13px;margin-bottom:6px;color:var(--muted)}
+    .contact-form input,.contact-form textarea{
+      width:100%;padding:10px;border-radius:10px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:var(--white);resize:vertical
+    }
+    .btn{display:inline-block;padding:10px 14px;border-radius:10px;background:linear-gradient(90deg,var(--accent),var(--accent-2));color:#03120f;font-weight:700;border:none;cursor:pointer}
+    .muted{color:var(--muted);font-size:14px}
+
+    /* -------------------------
+       FOOTER
+       ------------------------- */
+    footer{margin-top:46px;padding:26px 0;border-top:1px solid rgba(255,255,255,0.03)}
+    .footer-grid{display:flex;justify-content:space-between;gap:18px;align-items:center}
+    @media (max-width:640px){ .footer-grid{flex-direction:column;align-items:flex-start} }
+
+    /* small utilities */
+    .pill{background:linear-gradient(90deg,rgba(255,255,255,0.02),rgba(255,255,255,0.01));padding:8px 12px;border-radius:999px;font-weight:600;font-size:13px;color:var(--accent-2)}
+    .small{font-size:13px;color:var(--muted)}
+  </style>
+</head>
+<body>
+
+  <!-- NAV / HEADER -->
+  <header>
+    <div class="container nav">
+      <div class="brand">
+        <div class="logo" aria-hidden="true">CT</div>
+        <div>
+          <div style="font-weight:700">CodeX Techno</div>
+          <div class="small">The world of technology we build for tomorrow</div>
+        </div>
+      </div>
+
+      <nav>
+        <div class="burger" id="burger" aria-label="menu" title="Open menu" tabindex="0">
+          <div></div><div></div><div></div>
+        </div>
+        <ul id="navlist">
+          <li><a class="navlink" href="#home">Home</a></li>
+          <li><a class="navlink" href="#services">Services</a></li>
+          <li><a class="navlink" href="#how">How it Works</a></li>
+          <li><a class="navlink" href="#testimonials">Testimonials</a></li>
+          <li><a class="navlink" href="#contact">Contact</a></li>
+          <li><a class="cta" href="#contact">Get Started</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <main class="container" id="home">
+    <section class="hero">
+      <div class="hero-left">
+        <h1><span class="tagline">CodeX Techno</span><br>We build powerful digital products for modern businesses</h1>
+        <p class="lead">We design clean websites, build mobile apps and craft data solutions. Fast prototyping, scalable architecture, and green-friendly practices — tailored for startups and enterprises.</p>
+
+        <div class="hero-cta">
+          <a class="btn" href="#contact">Request a Demo</a>
+          <a class="pill" href="#services">Explore Services</a>
+        </div>
+
+        <div style="margin-top:22px;color:var(--muted);font-size:14px">Essential stacks: <strong style="color:var(--white)">HTML • CSS • JavaScript • React • Node • MongoDB</strong></div>
+      </div>
+
+      <aside class="hero-right">
+        <div class="card">
+          <div style="display:flex;justify-content:space-between;align-items:center">
+            <div>
+              <div style="font-size:12px;color:var(--muted)">Uptime</div>
+              <div style="font-weight:700;font-size:20px">99.9%</div>
+            </div>
+            <div>
+              <div style="font-size:12px;color:var(--muted)">Clients</div>
+              <div style="font-weight:700;font-size:20px">120+</div>
+            </div>
+          </div>
+          <hr style="border:none;border-top:1px solid rgba(255,255,255,0.03);margin:12px 0">
+          <div class="feature-mini">
+            <!-- simple svg icon -->
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="20" height="14" x="2" y="5" rx="2" stroke="white" stroke-opacity="0.9" stroke-width="1.2"/></svg>
+            <div>
+              <div style="font-weight:700">Managed Hosting</div>
+              <div style="color:var(--muted);font-size:13px">Optimized for speed and security.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card" aria-hidden="false" role="region">
+          <div style="display:flex;justify-content:space-between;align-items:center">
+            <div>
+              <div style="font-size:12px;color:var(--muted)">Demo</div>
+              <div style="font-weight:700">Live Prototype</div>
+            </div>
+            <div class="small">v1.0</div>
+          </div>
+          <hr style="border:none;border-top:1px solid rgba(255,255,255,0.03);margin:12px 0">
+          <div class="muted">Try the example pages, explore how we structure components and pages for clarity and reuse.</div>
+        </div>
+      </aside>
+    </section>
+
+    <!-- SERVICES / FEATURES -->
+    <section id="services">
+      <h2 style="margin-top:10px">Services we provide</h2>
+      <p class="muted">From prototypes to production-grade applications — pick what you need.</p>
+
+      <div class="grid" aria-hidden="false">
+        <div class="service">
+          <h4>Web Development</h4>
+          <p>Responsive sites using HTML, CSS, JS, and React for interactive experiences.</p>
+        </div>
+        <div class="service">
+          <h4>Mobile Apps</h4>
+          <p>Android & cross-platform apps built with modern patterns and native-feel UX.</p>
+        </div>
+        <div class="service">
+          <h4>Data & AI</h4>
+          <p>Data pipelines, ML models and dashboards to turn data into decisions.</p>
+        </div>
+        <div class="service">
+          <h4>UI / UX Design</h4>
+          <p>Design systems, prototypes, and pixel-perfect UI using Figma or Canva.</p>
+        </div>
+        <div class="service">
+          <h4>DevOps</h4>
+          <p>CI/CD pipelines, containerization and monitoring for resilient apps.</p>
+        </div>
+        <div class="service">
+          <h4>Consulting</h4>
+          <p>Product discovery, tech roadmap planning and mentorship for teams.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- HOW IT WORKS -->
+    <section id="how">
+      <h2>How it works</h2>
+      <p class="muted">A clear, simple process so you know what to expect.</p>
+      <div class="steps">
+        <div class="step card">
+          <strong>1. Kickoff</strong><div class="small">Share goals, timelines and existing assets.</div>
+        </div>
+        <div class="step card">
+          <strong>2. Prototype</strong><div class="small">Fast mockups & wireframes for feedback.</div>
+        </div>
+        <div class="step card">
+          <strong>3. Build & Test</strong><div class="small">Iterative development and QA testing.</div>
+        </div>
+        <div class="step card">
+          <strong>4. Deploy</strong><div class="small">Production release and monitoring.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TESTIMONIALS -->
+    <section id="testimonials" class="testimonials">
+      <div class="card-big">
+        <div style="display:flex;justify-content:space-between;align-items:center">
+          <div>
+            <strong>What clients say</strong>
+            <div class="small muted">Real feedback from our partners</div>
+          </div>
+        </div>
+
+        <div id="testimonialText" style="margin-top:14px">
+          <div class="quote">"CodeX Techno delivered a production-ready site quickly. Their approach to architecture and performance is excellent."</div>
+          <div style="margin-top:12px;font-weight:700">— Ananya, Product Manager</div>
+        </div>
+      </div>
+
+      <aside>
+        <div class="card">
+          <strong>Ready to start?</strong>
+          <div class="muted" style="margin-top:8px">Book a free 20-minute consultation to discuss your project and get a roadmap.</div>
+          <div style="margin-top:12px">
+            <a class="btn" href="#contact">Book Now</a>
+          </div>
+        </div>
+
+        <div style="margin-top:12px" class="card">
+          <div class="small muted">Statistics</div>
+          <div style="margin-top:8px;font-weight:700">Avg delivery: 4 weeks</div>
+        </div>
+      </aside>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="contact-row">
+      <div>
+        <h2>Contact & Request Demo</h2>
+        <p class="muted">Fill the form and we will reach out within 48 hours.</p>
+
+        <form class="contact-form card" id="contactForm" onsubmit="return handleForm(event)" style="margin-top:12px">
+          <label for="name">Full Name</label>
+          <input id="name" name="name" placeholder="Your name" required>
+
+          <label for="email">Email</label>
+          <input id="email" name="email" type="email" placeholder="you@domain.com" required>
+
+          <label for="message">Message</label>
+          <textarea id="message" name="message" rows="5" placeholder="Tell us about your project" required></textarea>
+
+          <div style="margin-top:12px;display:flex;gap:10px;align-items:center">
+            <button class="btn" type="submit">Send Request</button>
+            <div class="muted" id="formNote">No backend — this demo shows validation only.</div>
+          </div>
+        </form>
+      </div>
+
+      <aside class="card">
+        <h4>Office</h4>
+        <div class="muted">Email: codextechno.in@gmail.com</div>
+        <div style="margin-top:8px" class="muted">LinkedIn: @Codex Techno</div>
+
+        <hr style="border:none;border-top:1px solid rgba(255,255,255,0.03);margin:12px 0">
+
+        <h4>Quick Links</h4>
+        <div style="display:flex;flex-direction:column;gap:8px;margin-top:8px">
+          <a class="small" href="#services">Services</a>
+          <a class="small" href="#how">Process</a>
+          <a class="small" href="#testimonials">Testimonials</a>
+        </div>
+      </aside>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+      <div class="container footer-grid">
+        <div>
+          <div style="font-weight:700">CodeX Techno</div>
+          <div class="small muted">The world of technology we build for tomorrow</div>
+        </div>
+
+        <div style="text-align:right">
+          <div class="small muted">Designed by Paidi Tagore</div>
+          <div style="margin-top:8px" class="small muted">© <span id="year"></span> CodeX Techno — All rights reserved</div>
+        </div>
+      </div>
+    </footer>
+  </main>
+
+  <script>
+    // Basic JS to power interactive bits
+    (function(){
+      // set year in footer
+      document.getElementById('year').innerText = new Date().getFullYear();
+
+      // mobile nav toggle
+      const burger = document.getElementById('burger');
+      const navlist = document.getElementById('navlist');
+      burger.addEventListener('click', ()=> navlist.classList.toggle('show'));
+      burger.addEventListener('keypress', (e)=> { if(e.key === 'Enter') navlist.classList.toggle('show') });
+
+      // smooth scroll for internal links
+      document.querySelectorAll('a.navlink, a.pill, a.btn').forEach(a=>{
+        if(!a.hash) return;
+        a.addEventListener('click', (e)=>{
+          // let default anchor behavior if external
+        });
+      });
+
+      // demo testimonial rotate
+      const testimonials = [
+        {text:'"CodeX Techno delivered a production-ready site quickly. Their performance tuning was impressive."', author:'— Ananya, Product Manager'},
+        {text:'"Great communication & fast iterations. Our prototype turned into a live app in weeks."', author:'— Rajesh, Startup Founder'},
+        {text:'"They helped structure our data pipeline and dashboards — made decisions easier."', author:'— Mira, Data Lead'}
+      ];
+      let tIndex=0;
+      setInterval(()=>{
+        tIndex=(tIndex+1) % testimonials.length;
+        const el = document.getElementById('testimonialText');
+        el.innerHTML = '<div class="quote">'+testimonials[tIndex].text+'</div><div style="margin-top:12px;font-weight:700">'+testimonials[tIndex].author+'</div>';
+      }, 4500);
+
+      // form handler (frontend only)
+      window.handleForm = function(e){
+        e.preventDefault();
+        const name = document.getElementById('name').value.trim();
+        const email = document.getElementById('email').value.trim();
+        const message = document.getElementById('message').value.trim();
+        if(!name || !email || !message){
+          alert('Please complete all fields.');
+          return false;
+        }
+        // Basic email regex check
+        const re = /^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/;
+        if(!re.test(email)){
+          alert('Please enter a valid email address.');
+          return false;
+        }
+        // Since no backend in this demo, show success and clear form
+        alert('Thanks, ' + name + '! Your request has been recorded (demo).');
+        document.getElementById('contactForm').reset();
+        return false;
+      };
+    })();
+  </script>
+</body>
+</html>
